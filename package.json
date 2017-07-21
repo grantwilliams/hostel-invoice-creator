@@ -1,20 +1,25 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "hostel-invoice-creator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
+  "repository": "https://github.com/grantwilliams/hostel-invoice-creator.git",
   "author": "Grant Williams",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-preset-stage-1": "^6.24.1",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
-    "redux": "^3.7.2"
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
+    "redux": "^3.7.2",
+    "redux-promise": "^0.5.3"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

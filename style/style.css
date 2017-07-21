@@ -1,0 +1,45 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #eee;
+}
+
+.header {
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.search-bar {
+    margin: 0 auto;
+}
+
+.input-group-addon {
+    cursor: pointer;
+}
+
+.booking-list tbody td {
+    cursor: pointer;
+    display: table-cell;
+}
+
+.booking-list tbody tr:hover td {
+    background-color: silver;
+}
+
+.logo img {
+    max-width: 220px;
+}
+
+.booking {
+    margin-top: 90px;
+}
+
+.address {
+    margin-top: 20px;
+}
+
+::first-letter {
+    margin: 0;
+    padding: 0;
+}
