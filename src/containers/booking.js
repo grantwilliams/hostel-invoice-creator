@@ -20,6 +20,7 @@ componentWillMount() {
         <Address firstName={booking.first_name} lastName={booking.last_name} />
         <hr />
         <InvoiceData
+        booking_id={booking.booking_id}
         channel={booking.channel}
         arrivalDate={booking.arrival_date}
         nights={booking.nights}

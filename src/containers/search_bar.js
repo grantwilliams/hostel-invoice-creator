@@ -24,8 +24,8 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="row">
-        <form onSubmit={this.handleOnSubmit} className="form-inline search-bar col-sm-6 col-sm-offset-3">
+      <div className="row justify-content-center">
+        <form onSubmit={this.handleOnSubmit} className="form-inline search-bar">
           <div className="input-group">
             <input
             type="text"

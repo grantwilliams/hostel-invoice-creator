@@ -3,11 +3,16 @@ import { SEARCH_BOOKINGS, FETCH_ALL, FETCH_BOOKING } from '../actions/types';
 export default function(state=[], action) {
   switch (action.type) {
     case SEARCH_BOOKINGS:
-      return action.payload.data
+      return {
+        bookings: action.payload.data,
+        pageCount: Math.ceil(action.payload.data.length / 10)
+      }
     case FETCH_ALL:
-      return action.payload.data
+      return {
+        bookings: action.payload.data,
+        pageCount: Math.ceil(action.payload.data.length / 10)
+      }
     case FETCH_BOOKING:
-      console.log(action.payload.data)
       return action.payload.data
     default:
       return state;

@@ -43,3 +43,7 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+.pagination {
+    cursor: pointer;
+}

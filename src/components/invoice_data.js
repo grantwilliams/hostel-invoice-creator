@@ -1,8 +1,9 @@
 import React from 'react';
+import Moment from 'react-moment';
 
-const InvoiceData = ({channel, arrivalDate, nights, pax, totalPrice, deposit, dates, roomType}) => {
+const InvoiceData = ({booking_id, channel, arrivalDate, nights, pax, totalPrice, deposit, dates, roomType}) => {
   const fee = channel === 'hc' ? 2 : 0
-  totalPrice = channel === 'hc' ? totalPrice - 2 : totalPrice
+  totalPrice -= fee;
   let vatTotal = 0;
   let cityTaxTotal = 0;
   let total = 0;
@@ -30,6 +31,11 @@ const InvoiceData = ({channel, arrivalDate, nights, pax, totalPrice, deposit, da
 
   return (
     <div>
+      <div className="row">
+        <h4 className="col-6">Reservation No: {booking_id}</h4>
+        <h4 className="col-6 text-right">Invoice Date: <Moment format="DD MMM, YYYY">{new Date()}</Moment></h4>
+      </div>
+      <hr />
       <table className="table">
         <thead>
           <tr className="row">
