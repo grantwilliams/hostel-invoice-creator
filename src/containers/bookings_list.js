@@ -61,8 +61,8 @@ class BookingsList extends Component {
   render() {
     return (
       <div>
-        <table className="table table-striped booking-list">
-          <thead>
+        <table className="table table-hover table-striped booking-list">
+          <thead className="thead-default">
             <tr className="text-center">
               <td>Channel</td>
               <td>Booking ID</td>

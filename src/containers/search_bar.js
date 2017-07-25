@@ -29,7 +29,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row no-gutters">
         <button onClick={this.handleTodayOnClick} className="btn btn-primary">Show Todays arrivals only</button>
         <form onSubmit={this.handleOnSubmit} className="form-inline search-bar col-5">
           <div className="input-group">

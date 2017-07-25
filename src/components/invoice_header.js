@@ -2,7 +2,7 @@ import React from 'react';
 
 const InvoiceHeader = () => {
   return (
-    <div className="row">
+    <div className="row no-gutters">
       <div className="col-4 logo"><img src="http://imgur.com/UthY0zL.jpg" /></div>
       <div className="col-4 offset-4 text-right">
         <h5>Contact</h5>

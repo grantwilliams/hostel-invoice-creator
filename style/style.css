@@ -21,19 +21,14 @@ button {
 
 .booking-list tbody td {
     cursor: pointer;
-    display: table-cell;
-}
-
-.booking-list tbody tr:hover td {
-    background-color: silver;
 }
 
 .logo img {
-    max-width: 220px;
+    max-width: 200px;
 }
 
 .booking {
-    margin-top: 90px;
+    margin-top: 20px;
 }
 
 .address {

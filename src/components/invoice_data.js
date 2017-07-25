@@ -19,7 +19,7 @@ const InvoiceData = ({booking_id, channel, arrivalDate, nights, pax, totalPrice,
       cityTaxTotal += cityTax
       total += totalPerNight
         return (
-          <tr className="row" key={date}>
+          <tr className="row no-gutters" key={date}>
             <td className="col-9">{date} for {pax} person(s) in {roomType.slice(0, 1)}</td>
             <td className="col-1 text-center">{vat.toFixed(2)}€</td>
             <td className="col-1 text-center">{cityTax.toFixed(2)}€</td>
@@ -31,14 +31,14 @@ const InvoiceData = ({booking_id, channel, arrivalDate, nights, pax, totalPrice,
 
   return (
     <div>
-      <div className="row">
+      <div className="row no-gutters">
         <h5 className="col-6">Reservation No: {booking_id}</h5>
         <h5 className="col-6 text-right">Invoice Date: <Moment format="DD MMM, YYYY">{new Date()}</Moment></h5>
       </div>
       <hr />
       <table className="table">
         <thead>
-          <tr className="row">
+          <tr className="row no-gutters">
             <td className="col-9">Description and Quantity</td>
             <td className="col-1 text-center">VAT inc<br/>(7%)</td>
             <td className="col-1 text-center">City Tax (5%)</td>
@@ -47,17 +47,17 @@ const InvoiceData = ({booking_id, channel, arrivalDate, nights, pax, totalPrice,
         </thead>
         <tbody>
           {renderItems()}
-          <tr className="row">
+          <tr className="row no-gutters">
             <td className="col-2 offset-7 text-right"><strong>Totals</strong></td>
             <td className="col-1 text-center">{vatTotal.toFixed(2)}€</td>
             <td className="col-1 text-center">{cityTaxTotal.toFixed(2)}€</td>
             <td className="col-1 text-center"><strong>{total.toFixed(2)}€</strong></td>
           </tr>
-          <tr className="row">
+          <tr className="row no-gutters">
             <td className="col-2 offset-7 text-right"><strong>Depsosit Paid</strong></td>
             <td className="col-1 offset-2 text-center"><strong>{deposit}€</strong></td>
           </tr>
-          <tr className="row">
+          <tr className="row no-gutters">
             <td className="col-2 offset-7 text-right"><strong>Paid on arrival</strong></td>
             <td className="col-1 offset-2 text-center"><strong>{(total - deposit).toFixed(2)}€</strong></td>
           </tr>
