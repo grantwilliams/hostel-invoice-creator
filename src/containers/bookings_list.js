@@ -19,12 +19,23 @@ class BookingsList extends Component {
     this.props.fetchAllBookings()
   }
 
+  componentWillReceiveProps(nextProps) {
+    // resets offset and currentPage when page is reloaded
+    this.setState({
+      offset: 0,
+      currentPage: 0
+    });
+  }
+
   handleOnClick(booking_id) {
     this.props.history.push(`/booking/${booking_id}`)
   }
 
   handleOnPageChange({ selected }) {
-    this.setState({ offset: selected * 10 });
+    this.setState({
+      offset: selected * 10,
+      currentPage: selected
+    });
   }
 
   renderTable() {
@@ -68,13 +79,13 @@ class BookingsList extends Component {
           </tbody>
         </table>
         <ReactPaginate
-          key={1}
           previousLabel={"previous"}
           nextLabel={"next"}
           breakLabel={<a href="">...</a>}
           breakClassName={"page-link"}
           pageCount={this.props.pageCount}
           onPageChange={this.handleOnPageChange}
+          forcePage={this.state.currentPage}
           marginPagesDisplayed={2}
           pageRangeDisplayed={5}
           containerClassName={"pagination justify-content-center"}
@@ -91,8 +102,8 @@ class BookingsList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { bookings: state.search.bookings, pageCount: state.search.pageCount }
+function mapStateToProps({ search }) {
+  return { bookings: search.bookings, pageCount: search.pageCount }
 }
 
 export default withRouter(connect(mapStateToProps, actions)(BookingsList));
