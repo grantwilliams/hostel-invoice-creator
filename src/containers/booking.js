@@ -17,25 +17,16 @@ class Booking extends Component {
     return (
       <div className="booking">
         <InvoiceHeader />
-        <Address firstName={booking.first_name} lastName={booking.last_name} />
+        <Address firstName={booking.first_name} lastName={booking.last_name} email={booking.email} />
         <hr />
-        <InvoiceData
-        booking_id={booking.booking_id}
-        channel={booking.channel}
-        arrivalDate={booking.arrival_date}
-        nights={booking.nights}
-        pax={booking.pax}
-        totalPrice={booking.total_price}
-        deposit={booking.deposit}
-        dates={booking.dates}
-        roomType={booking.room_names} />
+        <InvoiceData booking={booking} />
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {booking: state.search}
+function mapStateToProps({ search }) {
+  return {booking: search.booking}
 }
 
 export default connect(mapStateToProps, actions)(Booking);

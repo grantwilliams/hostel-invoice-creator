@@ -18,7 +18,7 @@ export default function(state=[], action) {
         pageCount: Math.ceil(action.payload.data.length / 10)
       }
     case FETCH_BOOKING:
-      return action.payload.data
+      return { booking: action.payload.data }
     default:
       return state;
   }

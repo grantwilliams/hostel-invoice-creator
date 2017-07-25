@@ -47,6 +47,7 @@ class Address extends Component {
       return (
         <div className="col-8">
         <h4>{this.props.firstName} {this.props.lastName}</h4>
+        <h6>{this.props.email}</h6>
         <h6>{address.company}</h6>
         <h6>{address.street}</h6>
         <h6>{address.city}</h6>
@@ -57,7 +58,8 @@ class Address extends Component {
     return (
       <div className="col-8">
         <h4>{this.props.firstName} {this.props.lastName}</h4>
-        <form className="no-gutters" onSubmit={this.toggleSaveAddress}>
+        <h6>{this.props.email}</h6>
+        <form className="no-gutters hidden-print" onSubmit={this.toggleSaveAddress}>
           <fieldset className="form-control-sm col-6">
             <input className="form-control" value={address.company} onChange={this.handleOnCompanyChange} placeholder="Company" />
           </fieldset>

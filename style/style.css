@@ -7,7 +7,7 @@ html, body {
 
 .header {
     margin: 0 auto;
-    margin-top: 100px;
+    padding-top: 100px;
 }
 
 button {
@@ -28,11 +28,11 @@ button {
 }
 
 .booking {
-    margin-top: 20px;
+    padding-top: 20px;
 }
 
 .address {
-    margin-top: 20px;
+    padding-top: 20px;
 }
 
 /* Fixes print issue in Chrome */
