@@ -6,10 +6,10 @@ import Address from '../components/address';
 import InvoiceData from '../components/invoice_data';
 
 class Booking extends Component {
-componentWillMount() {
-  const { id } = this.props.match.params
-  this.props.fetchBooking(id)
-}
+  componentWillMount() {
+    const { id } = this.props.match.params
+    this.props.fetchBooking(id)
+  }
 
   render() {
     const { booking } = this.props

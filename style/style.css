@@ -10,12 +10,13 @@ html, body {
     margin-top: 100px;
 }
 
-.search-bar {
-    margin: 0 auto;
+button {
+    cursor: pointer;
+    cursor: hand;
 }
 
-.input-group-addon {
-    cursor: pointer;
+.search-bar {
+    margin: 0 auto;
 }
 
 .booking-list tbody td {
@@ -39,6 +40,7 @@ html, body {
     margin-top: 20px;
 }
 
+/* Fixes print issue in Chrome */
 ::first-letter {
     margin: 0;
     padding: 0;
@@ -46,4 +48,5 @@ html, body {
 
 .pagination {
     cursor: pointer;
+    cursor: hand;
 }

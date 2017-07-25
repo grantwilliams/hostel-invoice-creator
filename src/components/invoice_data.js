@@ -32,8 +32,8 @@ const InvoiceData = ({booking_id, channel, arrivalDate, nights, pax, totalPrice,
   return (
     <div>
       <div className="row">
-        <h4 className="col-6">Reservation No: {booking_id}</h4>
-        <h4 className="col-6 text-right">Invoice Date: <Moment format="DD MMM, YYYY">{new Date()}</Moment></h4>
+        <h5 className="col-6">Reservation No: {booking_id}</h5>
+        <h5 className="col-6 text-right">Invoice Date: <Moment format="DD MMM, YYYY">{new Date()}</Moment></h5>
       </div>
       <hr />
       <table className="table">
