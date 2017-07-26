@@ -11,6 +11,10 @@ class Booking extends Component {
     this.props.fetchBooking(id)
   }
 
+  printPage(){
+    window.print()
+  }
+
   render() {
     const { booking } = this.props
     if(!booking) { return <div></div> }
@@ -20,6 +24,7 @@ class Booking extends Component {
         <Address firstName={booking.first_name} lastName={booking.last_name} email={booking.email} />
         <hr />
         <InvoiceData booking={booking} />
+        <button onClick={this.printPage} className="btn btn-primary hidden-print">PRINT</button>
       </div>
     );
   }

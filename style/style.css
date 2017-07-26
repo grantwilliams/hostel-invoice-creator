@@ -35,6 +35,10 @@ button {
     padding-top: 20px;
 }
 
+.nights-button {
+    margin-right: 5px;
+}
+
 /* Fixes print issue in Chrome */
 ::first-letter {
     margin: 0;
