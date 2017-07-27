@@ -1,6 +1,6 @@
 import axios from 'axios';
 import moment from 'moment';
-import { SEARCH_BOOKINGS, FETCH_ALL, SHOW_BOOKING, FETCH_TODAY } from '../actions/types';
+import { SEARCH_BOOKINGS, FETCH_ALL, SHOW_BOOKING, FETCH_TODAY, SAVE_ADDRESS } from '../actions/types';
 
 const ROOT_URL = 'http://127.0.0.1:8000'
 
@@ -105,3 +105,8 @@ export function fetchTodaysArrivals() {
     payload: request
   }
 }
+
+export const saveAddress = (formProps) => ({
+  type: SAVE_ADDRESS,
+  payload: formProps
+})

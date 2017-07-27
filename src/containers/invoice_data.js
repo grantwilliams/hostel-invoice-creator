@@ -76,6 +76,6 @@ class InvoiceData extends Component{
   }
 };
 
-const mapStateToProps = ({ search }) => ({ booking: search.booking })
+const mapStateToProps = ({ booking }) => ({ booking: booking.booking })
 
 export default connect(mapStateToProps, actions)(InvoiceData);

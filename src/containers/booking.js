@@ -21,15 +21,15 @@ class Booking extends Component {
     return (
       <div className="booking">
         <InvoiceHeader />
-        <InvoiceAddress firstName={booking.first_name} lastName={booking.last_name} email={booking.email} />
+        <InvoiceAddress />
         <hr />
-        <InvoiceData booking={booking} />
+        <InvoiceData />
         <button onClick={this.printPage} className="btn btn-primary hidden-print">PRINT</button>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ search }) => ({ booking: search.booking })
+const mapStateToProps = ({ booking }) => ({ booking: booking.booking })
 
 export default connect(mapStateToProps, actions)(Booking);
