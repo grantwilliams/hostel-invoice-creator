@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { SEARCH_BOOKINGS, FETCH_ALL, FETCH_BOOKING, FETCH_TODAY } from '../actions/types';
+import moment from 'moment';
+import { SEARCH_BOOKINGS, FETCH_ALL, SHOW_BOOKING, FETCH_TODAY } from '../actions/types';
 
 const ROOT_URL = 'http://127.0.0.1:8000'
 
@@ -22,11 +23,77 @@ export function searchBookings(query) {
 }
 
 export function fetchBooking(id) {
-  const request = axios.get(`${ROOT_URL}/myallocator/booking/?id=${id}`)
+  return function(dispatch) {
+  axios.get(`${ROOT_URL}/myallocator/booking/?id=${id}`)
+    .then(({ data }) => {
+      const fee = data.channel == 'hc' ? 2 : 0
+      const total_price = data.total_price - fee
+      const pricePerNight = total_price / data.nights / data.pax
+      const vat = total_price * 0.07
+      const cityTax = total_price * 0.05
+      const invoiceDate = moment(data.arrival_date) > moment() ? moment().format("YYYY-MM-DD") : data.arrival_date
 
-  return {
-    type: FETCH_BOOKING,
-    payload: request
+      dispatch({
+        type: SHOW_BOOKING,
+        payload: { ...data, fee, total_price, pricePerNight, vat, cityTax, invoiceDate }
+      })
+    })
+  }
+}
+
+export function addNight(location) {
+  return function(dispatch, getState) {
+    let { booking } = getState().search
+    let dateToChange;
+    if(location == 'start') {
+      dateToChange = {
+        arrival_date: moment(booking.arrival_date).subtract(1, 'days').format("YYYY-MM-DD")
+      }
+      } else {
+        dateToChange = {
+          departure_date: moment(booking.departure_date).add(1, 'days').format("YYYY-MM-DD")
+      }
+    }
+    booking = {
+      ... booking,
+      ...dateToChange,
+      nights: booking.nights + 1,
+      total_price: booking.total_price + (booking.pricePerNight * booking.pax),
+      vat: (booking.total_price + (booking.pricePerNight * booking.pax)) * 0.07,
+      cityTax: (booking.total_price + (booking.pricePerNight * booking.pax)) * 0.05
+    };
+    dispatch({
+      type: SHOW_BOOKING,
+      payload: booking
+    })
+  }
+}
+
+export function subtractNight(location) {
+  return function(dispatch, getState) {
+    let { booking } = getState().search
+    let dateToChange;
+    if(location == 'start') {
+      dateToChange = {
+        arrival_date: moment(booking.arrival_date).add(1, 'days').format("YYYY-MM-DD")
+      }
+      } else {
+        dateToChange = {
+          departure_date: moment(booking.departure_date).subtract(1, 'days').format("YYYY-MM-DD")
+      }
+    }
+    booking = {
+      ... booking,
+      ...dateToChange,
+      nights: booking.nights - 1,
+      total_price: booking.total_price - (booking.pricePerNight * booking.pax),
+      vat: (booking.total_price - (booking.pricePerNight * booking.pax)) * 0.07,
+      cityTax: (booking.total_price - (booking.pricePerNight * booking.pax)) * 0.05
+    };
+    dispatch({
+      type: SHOW_BOOKING,
+      payload: booking
+    })
   }
 }
 

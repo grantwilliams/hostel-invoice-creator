@@ -1,4 +1,4 @@
-import { SEARCH_BOOKINGS, FETCH_ALL, FETCH_BOOKING, FETCH_TODAY } from '../actions/types';
+import { SEARCH_BOOKINGS, FETCH_ALL, SHOW_BOOKING, FETCH_TODAY } from '../actions/types';
 
 export default function(state=[], action) {
   switch (action.type) {
@@ -17,8 +17,8 @@ export default function(state=[], action) {
         bookings: action.payload.data,
         pageCount: Math.ceil(action.payload.data.length / 10)
       }
-    case FETCH_BOOKING:
-      return { booking: action.payload.data }
+    case SHOW_BOOKING:
+      return { booking: action.payload }
     default:
       return state;
   }

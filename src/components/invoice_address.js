@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Address extends Component {
+class InvoiceAddress extends Component {
   constructor(props) {
     super(props)
 
@@ -91,4 +91,4 @@ class Address extends Component {
   }
 };
 
-export default Address;
+export default InvoiceAddress;

@@ -11,8 +11,6 @@ class BookingsList extends Component {
     this.state = {
       offset: 0
     }
-    
-    this.handleOnPageChange = this.handleOnPageChange.bind(this)
   }
 
   componentWillMount() {
@@ -27,18 +25,18 @@ class BookingsList extends Component {
     });
   }
 
-  handleOnClick(booking_id) {
+  handleOnClick = booking_id => {
     this.props.history.push(`/booking/${booking_id}`)
   }
 
-  handleOnPageChange({ selected }) {
+  handleOnPageChange = ({ selected }) => {
     this.setState({
       offset: selected * 10,
       currentPage: selected
     });
   }
 
-  renderTable() {
+  renderTable = () => {
     if(!this.props.bookings) { return [<tr key={0}></tr>] }
 
     const bookingsSlice = this.props.bookings.slice(this.state.offset, this.state.offset + 10)
@@ -102,8 +100,6 @@ class BookingsList extends Component {
   }
 }
 
-function mapStateToProps({ search }) {
-  return { bookings: search.bookings, pageCount: search.pageCount }
-}
+const mapStateToProps = ({ search }) => ({ bookings: search.bookings, pageCount: search.pageCount })
 
 export default withRouter(connect(mapStateToProps, actions)(BookingsList));

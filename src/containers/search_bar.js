@@ -7,22 +7,18 @@ class SearchBar extends Component {
     super(props);
 
     this.state = { term: '' };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleOnSubmit = this.handleOnSubmit.bind(this);
-    this.handleTodayOnClick = this.handleTodayOnClick.bind(this);
   }
 
-  handleInputChange(event) {
+  handleInputChange = event => {
     this.setState({ term: event.target.value });
   }
 
-  handleOnSubmit(event) {
+  handleOnSubmit = event => {
     event.preventDefault()
     this.props.searchBookings(this.state.term)
   }
 
-  handleTodayOnClick(event) {
+  handleTodayOnClick = event => {
     event.preventDefault()
     this.props.fetchTodaysArrivals()
   }

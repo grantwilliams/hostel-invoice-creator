@@ -4,15 +4,13 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, browserHistory, Switch } from 'react-router-dom';
 import ReduxPromise from 'redux-promise';
+import reduxThunk from 'redux-thunk';
 
 import App from './containers/app';
-import Header from './containers/header';
-import SearchBar from './containers/search_bar';
-import BookingList from './containers/bookings_list';
 import Booking from './containers/booking';
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise, reduxThunk)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>

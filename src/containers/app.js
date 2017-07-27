@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from './header';
+import Header from '../components/header';
 import SearchBar from './search_bar';
 import BookingList from './bookings_list';
 
