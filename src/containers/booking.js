@@ -4,6 +4,7 @@ import * as actions from '../actions';
 import InvoiceHeader from '../components/invoice_header';
 import InvoiceAddress from '../components/invoice_address';
 import InvoiceData from './invoice_data';
+import NewInvoiceModal from './new_invoice_modal';
 
 class Booking extends Component {
   componentWillMount() {
@@ -24,6 +25,7 @@ class Booking extends Component {
         <InvoiceAddress />
         <hr />
         <InvoiceData />
+        <NewInvoiceModal buttonText="EDIT ALL" />
         <button onClick={this.printPage} className="btn btn-primary hidden-print">PRINT</button>
       </div>
     );

@@ -13,7 +13,7 @@ class InvoiceData extends Component{
             <button onClick={() => this.props.subtractNight('start')} className="btn btn-sm btn-danger nights-button">Subtract night start</button>
             <button onClick={() => this.props.subtractNight('end')} className="btn btn-sm btn-danger nights-button">Subtract night end</button>
           </div>
-          <strong>{booking.room_names.slice(0, 1)}</strong> room from {booking.arrival_date} to {booking.departure_date}<br />
+          <strong>{booking.room_names}</strong> room from {booking.arrival_date} to {booking.departure_date}<br />
           {booking.pax} person(s) for {booking.nights} nights<br />
           Price per person per night <strong>{booking.pricePerNight.toFixed(2)}€</strong>
           <div className="hidden-print">

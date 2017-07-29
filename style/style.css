@@ -35,9 +35,13 @@ button {
     padding-top: 20px;
 }
 
-.nights-button {
-    margin-right: 5px;
+.btn {
+    margin: 5px 5px 5px 0;
 }
+
+/* .nights-button {
+    margin-right: 5px;
+} */
 
 /* Fixes print issue in Chrome */
 ::first-letter {
@@ -48,4 +52,8 @@ button {
 .pagination {
     cursor: pointer;
     cursor: hand;
+}
+
+.error {
+    color: red;
 }

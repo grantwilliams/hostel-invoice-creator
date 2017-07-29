@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import NewInvoiceModal from './new_invoice_modal';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="row no-gutters">
+        <NewInvoiceModal buttonText="New Invoice" />
         <button onClick={this.handleTodayOnClick} className="btn btn-primary">Show Todays arrivals only</button>
         <form onSubmit={this.handleOnSubmit} className="form-inline search-bar col-5">
           <div className="input-group">

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import moment from 'moment';
+import qs from 'qs/dist/qs';
 import { SEARCH_BOOKINGS, FETCH_ALL, SHOW_BOOKING, FETCH_TODAY, SAVE_ADDRESS } from '../actions/types';
 
 const ROOT_URL = 'http://127.0.0.1:8000'
@@ -41,9 +42,56 @@ export function fetchBooking(id) {
   }
 }
 
+export function addNewBooking(formProps) {
+  const randomNum = Math.ceil(Math.random() * 10000000000)
+  const postData = {
+    booking_id: `${formProps.first_name}${formProps.last_name}${randomNum}`,
+    channel: 'walk in',
+    booking_date: formProps.booking_date,
+    booking_time: moment().format("HH:mm:ss"),
+    arrival_date: formProps.arrival_date,
+    departure_date: formProps.departure_date,
+    nights: formProps.nights,
+    first_name: formProps.first_name,
+    last_name: formProps.last_name,
+    email: formProps.email,
+    pax: formProps.pax,
+    room_names: formProps.room_names,
+    total_price: formProps.total_price,
+    deposit: formProps.deposit
+  }
+  axios.post(`${ROOT_URL}/myallocator/booking/add/`, qs.stringify(postData))
+}
+
+export function editAllBooking(formProps) {
+  return function(dispatch, getState) {
+    let { booking } = getState().booking
+    if(!booking) {
+      addNewBooking(formProps)
+    }
+    const { company, street, city, country, ...restProps } = formProps
+    const pricePerNight = restProps.total_price / restProps.nights / restProps.pax
+    const vat = restProps.total_price * 0.07
+    const cityTax = restProps.total_price * 0.05
+    const invoiceDate = moment(restProps.arrival_date) > moment() ? moment().format("YYYY-MM-DD") : restProps.arrival_date
+    console.log('form', formProps)
+    console.log('booking', booking)
+
+    booking = { ...booking, ...restProps, pricePerNight, vat, cityTax, invoiceDate }
+    // dispatch({
+    //   type: SHOW_BOOKING,
+    //   payload: booking
+    // })
+    dispatch({
+      type: SAVE_ADDRESS,
+      payload: { company, street, city, country }
+    })
+  }
+}
+
 export function addNight(location) {
   return function(dispatch, getState) {
-    let { booking } = getState().search
+    let { booking } = getState().booking
     let dateToChange;
     if(location == 'start') {
       dateToChange = {
@@ -71,7 +119,7 @@ export function addNight(location) {
 
 export function subtractNight(location) {
   return function(dispatch, getState) {
-    let { booking } = getState().search
+    let { booking } = getState().booking
     let dateToChange;
     if(location == 'start') {
       dateToChange = {
