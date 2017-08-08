@@ -25,7 +25,7 @@ class Booking extends Component {
         <InvoiceAddress />
         <hr />
         <InvoiceData />
-        <NewInvoiceModal buttonText="EDIT ALL" />
+        <NewInvoiceModal buttonText="EDIT INVOICE" newInvoice={false} />
         <button onClick={this.printPage} className="btn btn-primary hidden-print">PRINT</button>
       </div>
     );

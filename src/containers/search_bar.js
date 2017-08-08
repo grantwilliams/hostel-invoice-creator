@@ -27,7 +27,7 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="row no-gutters">
-        <NewInvoiceModal buttonText="New Invoice" />
+        <NewInvoiceModal buttonText="New Invoice" newInvoice={true} />
         <button onClick={this.handleTodayOnClick} className="btn btn-primary">Show Todays arrivals only</button>
         <form onSubmit={this.handleOnSubmit} className="form-inline search-bar col-5">
           <div className="input-group">
@@ -37,7 +37,7 @@ class SearchBar extends Component {
             placeholder="Search bookings..."
             value={this.state.term}
             onChange={this.handleInputChange} />
-            <button type="submit" className=" btn input-group-addon"><i className="fa fa-search"></i></button>
+            <button type="submit" className="input-group-addon"><i className="fa fa-search"></i></button>
           </div>
         </form>
       </div>

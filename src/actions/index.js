@@ -70,21 +70,21 @@ export function editAllBooking(formProps) {
       addNewBooking(formProps)
     }
     const { company, street, city, country, ...restProps } = formProps
+    restProps.total_price = parseFloat(restProps.total_price)
+    restProps.deposit = parseFloat(restProps.deposit)
     const pricePerNight = restProps.total_price / restProps.nights / restProps.pax
     const vat = restProps.total_price * 0.07
     const cityTax = restProps.total_price * 0.05
     const invoiceDate = moment(restProps.arrival_date) > moment() ? moment().format("YYYY-MM-DD") : restProps.arrival_date
-    console.log('form', formProps)
-    console.log('booking', booking)
 
     booking = { ...booking, ...restProps, pricePerNight, vat, cityTax, invoiceDate }
-    // dispatch({
-    //   type: SHOW_BOOKING,
-    //   payload: booking
-    // })
     dispatch({
       type: SAVE_ADDRESS,
       payload: { company, street, city, country }
+    })
+    dispatch({
+      type: SHOW_BOOKING,
+      payload: booking
     })
   }
 }
