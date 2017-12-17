@@ -9,6 +9,7 @@ import reduxThunk from 'redux-thunk';
 import App from './containers/app';
 import Booking from './containers/booking';
 import reducers from './reducers';
+import '../style/style.css'
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise, reduxThunk)(createStore);
 
